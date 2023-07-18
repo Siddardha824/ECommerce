@@ -1,0 +1,265 @@
+.menu
+{
+    background-color: rgb(19, 25, 33);
+    justify-content: space-between;
+    height: 60px;
+    border-bottom: 2px solid #198754;
+}
+
+.bgcol
+{
+    background-color: rgb(227, 230, 230);
+}
+
+.bagc
+{
+    background-color: rgb(19, 25, 33);
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.navg
+{
+    width: 40%;
+    height: 100%;
+    padding-left: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mycard
+{
+    width:200px;
+    display:inline-block;
+    position: relative;
+    height: fit-content;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #ffffff;
+}
+
+.pname
+{
+    font-size: larger;
+    text-align: center;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.price
+{
+    color: #198754;
+    text-align: center;
+    font-weight: 500;
+    font-family:cursive;
+}
+
+.details
+{
+    position: absolute;
+    padding: 10px;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-2em);
+    z-index: -1;
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+}
+
+.mycard:hover .details
+{
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+    left: 0;
+    background-color: #ffffff;
+    width: 200px;
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0%);
+    transition-delay: 0s, 0s, 0.3s;
+}
+
+img
+{
+    width:100%;
+    height:100%;
+}
+
+.containe
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: start;
+    padding: 0px;
+    margin: 0px;
+}
+
+.cent
+{
+    margin: 5px;
+    text-align: center;
+}
+
+.cen
+{
+    display: flex;
+    justify-content: center;
+    padding-top: 20%;
+}
+
+.user-info
+{
+    width: 12%;
+    padding-right: 10px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+}
+
+.uinfo
+{
+    color: #ffffff;
+    font-weight: 500;
+    position: relative;
+    padding: 5px;
+}
+
+.drop-down
+{
+    display: none;
+}
+
+.uinfo:hover .drop-down
+{
+    display: block;
+    position: absolute;
+    background-color: rgb(19, 25, 33);
+    border-bottom: 3px solid #198754;
+    border-left: 3px solid #198754;
+    border-right: 2px solid #198754;
+    width: 170px;
+    top: 35px;
+    right: 0px;
+    padding: 5px;
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.upload
+{
+    display: flex;
+    flex-direction: column;
+    width: 575px;
+    background-color: rgb(35, 47, 62);
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    border: 2px solid #198754;
+}
+
+.login
+{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background-color: rgb(35, 47, 62);
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    border: 2px solid #198754;
+}
+
+.uploadcont
+{
+    display: flex;
+    justify-content: center;
+}
+
+.ordedby
+{
+    text-align: center;
+    font-weight: 600;
+
+}
+
+.placeorder
+{
+    font-size: x-large;
+    margin-right: 20px;
+    color: #ffffff;
+}
+
+.porder
+{
+    justify-content: end;
+    background-color: rgb(35, 47, 62);
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+}
+
+.succe
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    font-weight: bolder;
+    font-size: xx-large;
+    color: #198754;
+}
+
+.faile
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    font-weight: bolder;
+    font-size: xx-large;
+    color: red;
+}
+
+.reslink
+{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.regfail,.regsucc
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+}
+
+.regfailtex
+{
+    font-size: x-large;
+    font-weight: 700;
+    color: red;
+}
+
+.regsucctex
+{
+    font-size: x-large;
+    font-weight: 700;
+    color: #198754;
+}
