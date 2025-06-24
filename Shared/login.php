@@ -1,42 +1,37 @@
 <?php
 
+    include_once "../DatabaseScripts/accessDatabase.php";
+
     session_start();
+    header('Content-Type: application/json');
+
     $_SESSION['status'] = false;
 
-    $uname = $_POST["uname"];
-    $upass = $_POST["upass"];
+    $uname = $_POST["uname"] ?? '';
+    $upass = $_POST["upass"] ?? '';
 
-    include_once "connection.php";
-
-    $check =  mysqli_query($conn,"Select * from users where user_name = '$uname' and password = '$upass'");
-
-    if(! $check)
-    {
-        echo "Login Failed";
-        echo mysqli_error($conn);
-        die;
+    if (empty($uname) || empty($upass)) {
+        echo replyMsg("Username and password are required.", false, 400);
+        exit;
     }
 
-    if($check->num_rows == 0)
-    {
-        echo "Incorrect Credentials";
-        die;
+    $result = json_decode(verifyLoginCredentials($uname, $upass), true);
+
+    if (!$result["success"]) {
+        echo json_encode($result);
+        exit;
     }
-
-    $row = mysqli_fetch_assoc($check);
-
+    $result = json_decode($result["message"], true);
+    // Set session variables
     $_SESSION['status'] = true;
-    $_SESSION['uname'] = $row['user_name'];
-    $_SESSION['uid'] = $row['user_id'];
-    $_SESSION['utype'] = $row['user_type'];
+    $_SESSION['uname'] = $result["user_name"];
+    $_SESSION['uid'] = $result["user_id"];
+    $_SESSION['utype'] = $result["user_type"];
 
-    if($row['user_type'] == 'Vendor')
-    {
-        header("location:../Vendor/home.php");
-    }
-    else
-    {
-        header("location:../Customer/home.php");
-    }
+    $redirect = ($result["user_type"] === 'Vendor') ? '../Vendor/home.php' : '../Customer/home.php';
+
+    echo replyMsg($redirect, true, 200);
+
+    exit;
 
 ?>

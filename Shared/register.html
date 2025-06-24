@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../Shared/styles.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bgcol">
-    
-    <div class="uploadcont align-items-center vh-100">
-        <form action="register.php" class="login" onsubmit="return validate()" method="post">
+
+    <div class="uploadcont align-items-center vh-100 d-flex justify-content-center">
+        <form id="regForm" class="login w-50">
             <div class="text-center text-light">
                 <h4>Register here</h4>
             </div>
-            <input class="form-control mt-3" type="text" name="uname" placeholder="Enter user name">
-            <input id="pass1" class="form-control mt-2" type="password" name="upass1" placeholder="Enter Password">
-            <input id="pass2" class="form-control mt-2" type="password" name="upass2" placeholder="Re-enter Password">
+            <input class="form-control mt-3" type="text" name="uname" placeholder="Enter user name" required>
+            <input id="pass1" class="form-control mt-2" type="password" name="upass1" placeholder="Enter Password" required>
+            <input id="pass2" class="form-control mt-2" type="password" name="upass2" placeholder="Re-enter Password" required>
             <select class="form-control mt-2" name="utype">
                 <option>Vendor</option>
                 <option>Customer</option>
             </select>
-            <button class="form-control mt-3 btn btn-success bagc">Register</button>
+            <button type="submit" class="form-control mt-3 btn btn-success bagc">Register</button>
             <div class="text-center mt-2">
-            <a class="link-light" href="login.html">Already registered? Login Here</a>
+                <a class="link-light" href="login.html">Already registered? Login Here</a>
             </div>
         </form>
     </div>
 
     <script>
+    const form = document.getElementById("regForm");
+    const pass1 = document.getElementById("pass1");
+    const pass2 = document.getElementById("pass2");
 
-        pass1obj = document.getElementById("pass1");
-        pass2obj = document.getElementById("pass2");
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-        function validate()
-        {
-            if(pass1obj.value == pass2obj.value)
-            {
-                return true;
-            }
-            else
-            {
-                alert("Password Mismatch");
-                return false;
-            }
+        if (pass1.value !== pass2.value) {
+            alert("Passwords do not match.");
+            return;
         }
+
+        const formData = new FormData(form);
+
+        const response = await fetch("register.php", {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+
+        alert(result.message);
+        if (result.success) {
+            window.location.href = "login.html";
+        }
+    });
     </script>
 
 </body>
