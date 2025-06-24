@@ -30,11 +30,11 @@
 
         while ($row = mysqli_fetch_assoc($result))
         {
-            $pid = $row['ProductID'];
-            $name = $row['ProductName'];
-            $impath = $row['ImagePath'];
-            $details = $row['Details'];
-            $price = $row['Price'];
+            $pid = $row['product_id'];
+            $name = $row['product_name'];
+            $impath = $row['img'];
+            $details = $row['details'];
+            $price = $row['price'];
 
             echo "<div class='mycard'>
                     <div class='imag'>

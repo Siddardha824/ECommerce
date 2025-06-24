@@ -22,11 +22,11 @@
         date_default_timezone_set("Asia/Kolkata");
         $filename = "../shared/images/".$uid.date("dMY_H_i_s").".jpg";
         move_uploaded_file($tempath,$filename);
-        $query = "Update products set ProductName = '$pname',ImagePath = '$filename',Details = '$details',Price = $price where productid = $pid";
+        $query = "Update products set product_name = '$pname',img = '$filename',details = '$details',price = $price where product_id = $pid";
     }
     else
     {
-        $query = "Update products set ProductName = '$pname',Details = '$details',Price = $price where productid = $pid";
+        $query = "Update products set product_name = '$pname',details = '$details',price = $price where product_id = $pid";
     }
 
     $result = mysqli_query($conn,$query);

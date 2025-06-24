@@ -20,7 +20,7 @@
     $filename = "../shared/images/".$uid.date("dMY_H_i_s").".jpg";
     move_uploaded_file($tempath,$filename);
 
-    $query = "Insert into products(ProductName,ImagePath,UploadedBy,Details,Price) values('$pname','$filename',$uid,'$details',$price)";
+    $query = "Insert into products(product_name,img,user_id,details,price) values('$pname','$filename',$uid,'$details',$price)";
 
     $result = mysqli_query($conn,$query);
 

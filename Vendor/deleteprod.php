@@ -12,9 +12,9 @@
 
     $pid = $_GET['pid'];
 
-    $query = "delete FROM Products WHERE ProductID = $pid";
+    $query = "delete FROM Products WHERE product_id = $pid";
     $result1 = mysqli_query($conn,$query);
-    $query = "delete FROM cartlist WHERE ProductID = $pid";
+    $query = "delete FROM cartlist WHERE product_id = $pid";
     $result2 = mysqli_query($conn,$query);
     if(! ($result1 & $result2))
     {

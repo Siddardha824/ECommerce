@@ -12,7 +12,7 @@
     include_once "../shared/connection.php";
 
     $pid = $_GET["pid"];
-    $query = "select * from products where productid = $pid";
+    $query = "select * from products where product_id = $pid";
     $result=mysqli_query($conn,$query);
     if(! $result)
     {
@@ -22,10 +22,10 @@
     }
 
     $row = mysqli_fetch_assoc($result);
-    $name = $row['ProductName'];
-    $impath = $row['ImagePath'];
-    $details = $row['Details'];
-    $price = $row['Price'];
+    $name = $row['product_name'];
+    $impath = $row['img'];
+    $details = $row['details'];
+    $price = $row['price'];
 
     echo '<div class="uploadcont">
             <form action="editproduct.php" class="upload" method="post" enctype="multipart/form-data">
