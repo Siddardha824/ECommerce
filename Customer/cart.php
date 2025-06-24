@@ -11,7 +11,7 @@
     include_once "menu.html";
     include_once "../shared/connection.php";
 
-    $query = "select * from cart natural join products where cart.user_id = $uid";
+    $query = "select * from cart join products on cart.product_id = products.product_id where cart.user_id = $uid";
     $result = mysqli_query($conn,$query);
 
     if(! $result)

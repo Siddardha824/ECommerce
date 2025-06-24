@@ -12,7 +12,7 @@
 
     $oid = $_GET['oid'];
 
-    $query = "UPDATE orders SET status = `Delivered` WHERE order_id = $oid";
+    $query = "UPDATE orders SET status = 'Delivered' WHERE order_id = $oid";
 
     $result = mysqli_query($conn,$query);
     if(! $result)

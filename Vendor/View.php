@@ -11,7 +11,7 @@
     include_once "menu.html";
     include_once "../shared/connection.php";
 
-    $query = "select * from (orders natural join products) join users where (orders.user_id = users.user_id) and (products.user_id = $uid)";
+    $query = "select * from (orders join products on orders.product_id = products.product_id) join users on orders.user_id = users.user_id where products.user_id = $uid";
     $result = mysqli_query($conn,$query);
 
     if(! $result)
@@ -35,7 +35,7 @@
         $uname = $row['user_name'];
         $total = $total + $price;
 
-        if ($row['OrderStatus'] == 1)
+        if ($row['status'] ==  "Ordered" || $row['status'] == "In Transit")
         {
             echo "<div class='mycard'>
                 <div class='imag'>
@@ -46,18 +46,18 @@
                 <div class='ordedby'>Ordered By $uname</div>
                 <div class='details'>$details</div>
                 <div class = 'cent'>
-                    <a class = 'btn btn-success bagc' href='delivered.php?cid=$cid'>
+                    <a class = 'btn btn-success bagc' href='delivered.php?oid=$oid'>
                     Mark as Delivered
                     </a>
                 </div>
                 <div class = 'cent'>
-                    <a class = 'btn btn-danger bagc' href='cancel.php?cid=$cid'>
+                    <a class = 'btn btn-danger bagc' href='cancel.php?oid=$oid'>
                     Cancel Order
                     </a>
                 </div>
             </div>";
         }
-        elseif ($row['OrderStatus'] == 2)
+        elseif ($row['status'] ==  "Delivered")
         {
             echo "<div class='mycard'>
                 <div class='imag'>

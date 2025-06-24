@@ -12,7 +12,7 @@
 
     include_once "../shared/connection.php";
 
-    $query = "delete from cartlist where user_id = $uid and product_id = $pid";
+    $query = "delete from cart where user_id = $uid and product_id = $pid";
 
     $result = mysqli_query($conn,$query);
     if(! $result)

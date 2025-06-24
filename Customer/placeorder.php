@@ -12,7 +12,7 @@
 
     $pid = $_GET['pid'];
 
-    $query = "insert into orders(user_id,product_id,status) values($uid,$pid,`Ordered`)";
+    $query = "insert into orders(user_id,product_id,status) values($uid,$pid,'Ordered')";
 
     $result = mysqli_query($conn,$query);
     if(! $result)

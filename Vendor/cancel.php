@@ -12,7 +12,7 @@
 
     include_once "../shared/connection.php";
 
-    $query = "Update orders set status = `Canceled` where order_id = $oid";
+    $query = "Update orders set status = 'Canceled' where order_id = $oid";
 
     $result = mysqli_query($conn,$query);
     if($result)
