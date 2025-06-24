@@ -10,9 +10,9 @@
 
     include_once "../shared/connection.php";
 
-    $cid = $_GET['cid'];
+    $oid = $_GET['oid'];
 
-    $query = "UPDATE cartlist SET OrderStatus = 2 WHERE cartlist.CartID = $cid";
+    $query = "UPDATE orders SET status = `Delivered` WHERE order_id = $oid";
 
     $result = mysqli_query($conn,$query);
     if(! $result)

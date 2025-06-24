@@ -24,7 +24,7 @@
 
     include_once "connection.php";
 
-    $check =  mysqli_query($conn,"Select userID from users where user_name = '$uname'");
+    $check =  mysqli_query($conn,"Select user_id from users where user_name = '$uname'");
 
     if(! $check)
     {

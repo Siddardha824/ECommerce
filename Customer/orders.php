@@ -11,7 +11,7 @@
     include_once "menu.html";
     include_once "../shared/connection.php";
 
-    $query = "select * from cartlist natural join products where CustomerID = $uid and (OrderStatus = 1 or OrderStatus = 2 or OrderStatus = 3)";
+    $query = "select * from orders natural join products where orders.user_id = $uid";
     $result = mysqli_query($conn,$query);
 
     if(! $result)
@@ -31,10 +31,10 @@
         $impath = $row['img'];
         $details = $row['details'];
         $price = $row['price'];
-        $cid = $row['CartID'];
+        $oid = $row['order_id'];
         $total = $total + $price;
 
-        if ($row['OrderStatus'] == 1)
+        if ($row['status'] == "Ordered" || $row['status'] == "In Transit")
         {
             echo "<div class='mycard'>
                 <div class='imag'>
@@ -44,13 +44,13 @@
                 <div class='price'>₹$price</div>
                 <div class='details'>$details</div>
                 <div class = 'cent'>
-                    <a class = 'btn btn-danger bagc' href='cancelorder.php?cid=$cid'>
+                    <a class = 'btn btn-danger bagc' href='cancelorder.php?oid=$oid'>
                     Cancel Order
                     </a>
                 </div>
             </div>";
         }
-        elseif ($row['OrderStatus'] == 2)
+        elseif ($row['status'] == "Delivered")
         {
             echo "<div class='mycard'>
                 <div class='imag'>

@@ -12,7 +12,7 @@
 
     include_once "../shared/connection.php";
 
-    $query = "insert into cartlist(CustomerID,ProductID,OrderStatus) values($uid,$pid,0)";
+    $query = "insert into cart(user_id,product_id) values($uid,$pid)";
 
     $result = mysqli_query($conn,$query);
     if(! $result)

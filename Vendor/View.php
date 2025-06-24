@@ -11,7 +11,7 @@
     include_once "menu.html";
     include_once "../shared/connection.php";
 
-    $query = "select * from (cartlist natural join products) join users where (cartlist.customerid = users.userid) and (UploadedBy = $uid and (OrderStatus = 1 or OrderStatus = 2 or OrderStatus = 3))";
+    $query = "select * from (orders natural join products) join users where (orders.user_id = users.user_id) and (products.user_id = $uid)";
     $result = mysqli_query($conn,$query);
 
     if(! $result)
@@ -31,7 +31,7 @@
         $impath = $row['img'];
         $details = $row['details'];
         $price = $row['price'];
-        $cid = $row['CartID'];
+        $oid = $row['order_id'];
         $uname = $row['user_name'];
         $total = $total + $price;
 

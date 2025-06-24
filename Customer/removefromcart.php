@@ -1,6 +1,6 @@
 <?php
 
-    $cid = $_GET['cid'];
+    $pid = $_GET['pid'];
 
     include_once "../shared/authguard.php";
 
@@ -12,7 +12,7 @@
 
     include_once "../shared/connection.php";
 
-    $query = "delete from cartlist where cartid = $cid";
+    $query = "delete from cartlist where user_id = $uid and product_id = $pid";
 
     $result = mysqli_query($conn,$query);
     if(! $result)

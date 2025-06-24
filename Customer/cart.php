@@ -11,7 +11,7 @@
     include_once "menu.html";
     include_once "../shared/connection.php";
 
-    $query = "select * from cartlist natural join products where CustomerID = $uid and OrderStatus = 0";
+    $query = "select * from cart natural join products where cart.user_id = $uid";
     $result = mysqli_query($conn,$query);
 
     if(! $result)
@@ -31,7 +31,6 @@
         $impath = $row['img'];
         $details = $row['details'];
         $price = $row['price'];
-        $cid = $row['CartID'];
         $total = $total + $price;
         echo "<div class='mycard'>
                 <div class='imag'>
@@ -41,12 +40,12 @@
                 <div class='price'>₹$price</div>
                 <div class='details'>$details</div>
                 <div class = 'cent'>
-                    <a class = 'btn btn-success bagc' href='placeorder.php?cid=$cid'>
+                    <a class = 'btn btn-success bagc' href='placeorder.php?pid=$pid'>
                     Place Order
                     </a>
                 </div>
                 <div class = 'cent'>
-                    <a class = 'btn btn-danger bagc' href='removefromcart.php?cid=$cid'>
+                    <a class = 'btn btn-danger bagc' href='removefromcart.php?pid=$pid'>
                     Remove From Cart
                     </a>
                 </div>

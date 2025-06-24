@@ -8,11 +8,11 @@
         die;
     }
 
-    $cid = $_GET['cid'];
+    $oid = $_GET['oid'];
 
     include_once "../shared/connection.php";
 
-    $query = "update cartlist set OrderStatus = 3 where cartid = $cid";
+    $query = "update orders set status = `Canceled` where order_id = $oid";
 
     $result = mysqli_query($conn,$query);
     if(! $result)

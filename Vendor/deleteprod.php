@@ -14,8 +14,6 @@
 
     $query = "delete FROM Products WHERE product_id = $pid";
     $result1 = mysqli_query($conn,$query);
-    $query = "delete FROM cartlist WHERE product_id = $pid";
-    $result2 = mysqli_query($conn,$query);
     if(! ($result1 & $result2))
     {
         $err=mysqli_error($conn);
