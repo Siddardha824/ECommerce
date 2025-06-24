@@ -24,7 +24,7 @@
 
     include_once "connection.php";
 
-    $check =  mysqli_query($conn,"Select userID from users where User_Name = '$uname'");
+    $check =  mysqli_query($conn,"Select userID from users where user_name = '$uname'");
 
     if(! $check)
     {
@@ -46,7 +46,7 @@
         die;
     }
 
-    $status =  mysqli_query($conn,"Insert into users(User_Name,Password,UserType) values('$uname','$upass1','$utype')");
+    $status =  mysqli_query($conn,"Insert into users(user_name,password,user_type) values('$uname','$upass1','$utype')");
 
     if($status)
     {

@@ -8,7 +8,7 @@
 
     include_once "connection.php";
 
-    $check =  mysqli_query($conn,"Select * from users where User_Name = '$uname' and Password = '$upass'");
+    $check =  mysqli_query($conn,"Select * from users where user_name = '$uname' and password = '$upass'");
 
     if(! $check)
     {
@@ -26,11 +26,11 @@
     $row = mysqli_fetch_assoc($check);
 
     $_SESSION['status'] = true;
-    $_SESSION['uname'] = $row['User_Name'];
-    $_SESSION['uid'] = $row['UserID'];
-    $_SESSION['utype'] = $row['UserType'];
+    $_SESSION['uname'] = $row['user_name'];
+    $_SESSION['uid'] = $row['user_id'];
+    $_SESSION['utype'] = $row['user_type'];
 
-    if($row['UserType'] == 'Vendor')
+    if($row['user_type'] == 'Vendor')
     {
         header("location:../Vendor/home.php");
     }
