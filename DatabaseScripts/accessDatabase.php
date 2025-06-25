@@ -1,12 +1,12 @@
 <?php
 
     include_once "config.php";
-    function connect_db() {
+    function connect_db($user = "user") {
         global $database, $database_user, $database_admin;
         $db_connection = new mysqli(
             $database["host"],
-            $database_user["username"],
-            $database_user["password"],
+            $user === "admin" ? $database_admin["username"] : $database_user["username"],
+            $user === "admin" ? $database_admin["password"] : $database_user["password"],
             $database["database_name"],
             $database["port"]
         );
@@ -140,5 +140,120 @@
         ]), true, 200);
     }
 
+    function getProducts() {
+        $db_connection = connect_db();
+        if (!$db_connection) {
+            return replyMsg("Database connection failed.", false, 500);
+        }
+
+        $query = "SELECT * FROM products";
+        $result = $db_connection->query($query);
+
+        if (!$result) {
+            $db_connection->close();
+            return replyMsg("Failed to retrieve products: " . $db_connection->error, false, 500);
+        }
+
+        if ($result->num_rows === 0) {
+            $db_connection->close();
+            return replyMsg("No products available.", true, 200);
+        }
+
+        $products = [];
+        while ($row = $result->fetch_assoc()) {
+            $products[] = $row;
+        }
+
+        $db_connection->close();
+        return replyMsg(json_encode($products), true, 200);
+    }
+
+    function getCart($userId) {
+        $db_connection = connect_db();
+        if (!$db_connection) {
+            return replyMsg("Database connection failed.", false, 500);
+        }
+
+        $query = "SELECT * FROM cart JOIN products ON cart.product_id = products.product_id WHERE cart.user_id = ?";
+        $stmt = $db_connection->prepare($query);
+        if (!$stmt) {
+            $db_connection->close();
+            return replyMsg("Failed to prepare cart query.", false, 500);
+        }
+
+        $stmt->bind_param("i", $userId);
+        if (!$stmt->execute()) {
+            $stmt->close();
+            $db_connection->close();
+            return replyMsg("Failed to execute cart query.", false, 500);
+        }
+
+        $result = $stmt->get_result();
+        if (!$result) {
+            $stmt->close();
+            $db_connection->close();
+            return replyMsg("Failed to retrieve cart items.", false, 500);
+        }
+
+        if ($result->num_rows === 0) {
+            $stmt->close();
+            $db_connection->close();
+            return replyMsg("No items in the cart.", true, 200);
+        }
+
+        $cartItems = [];
+        while ($row = $result->fetch_assoc()) {
+            $cartItems[] = $row;
+        }
+
+        $stmt->close();
+        $db_connection->close();
+
+        return replyMsg(json_encode($cartItems), true, 200);
+    }
+
+    function getOrders($userId) {
+        $db_connection = connect_db();
+        if (!$db_connection) {
+            return replyMsg("Database connection failed.", false, 500);
+        }
+
+        $query = "SELECT * FROM orders JOIN products ON orders.product_id = products.product_id WHERE orders.user_id = ?";
+        $stmt = $db_connection->prepare($query);
+        if (!$stmt) {
+            $db_connection->close();
+            return replyMsg("Failed to prepare orders query.", false, 500);
+        }
+
+        $stmt->bind_param("i", $userId);
+        if (!$stmt->execute()) {
+            $stmt->close();
+            $db_connection->close();
+            return replyMsg("Failed to execute orders query.", false, 500);
+        }
+
+        $result = $stmt->get_result();
+        if (!$result) {
+            $stmt->close();
+            $db_connection->close();
+            return replyMsg("Failed to retrieve orders.", false, 500);
+        }
+
+        if ($result->num_rows === 0) {
+            $stmt->close();
+            $db_connection->close();
+            return replyMsg("No orders found.", true, 200);
+        }
+
+        $orders = [];
+        while ($row = $result->fetch_assoc()) {
+            $orders[] = $row;
+        }
+
+        $stmt->close();
+        $db_connection->close();
+
+        return replyMsg(json_encode($orders), true, 200);
+    }
 
 ?>
