@@ -8,56 +8,58 @@
         die;
     }
 
-    include_once "menu.html";
-    include_once "../shared/connection.php";
+    // include_once "menu.html";
+    include_once "../DatabaseScripts/accessDatabase.php";
 
-    $query = "select * from products where user_id = $uid";
-    $result = mysqli_query($conn,$query);
+    echo getProducts($uid);
 
-    if(! $result)
-    {
-        echo "Connection Error";
-        echo mysqli_error($conn);
-    }
+    // $query = "select * from products where user_id = $uid";
+    // $result = mysqli_query($conn,$query);
 
-    if(mysqli_num_rows($result) == 0)
-    {
-        echo "<h4 class='cen'>You did not Upload any Products.</h4>";
-    }
-    else
-    {
-        echo "<div class='containe'>";
+    // if(! $result)
+    // {
+    //     echo "Connection Error";
+    //     echo mysqli_error($conn);
+    // }
 
-        while ($row = mysqli_fetch_assoc($result))
-        {
-            $pid = $row['product_id'];
-            $name = $row['product_name'];
-            $impath = $row['img'];
-            $details = $row['details'];
-            $price = $row['price'];
+    // if(mysqli_num_rows($result) == 0)
+    // {
+    //     echo "<h4 class='cen'>You did not Upload any Products.</h4>";
+    // }
+    // else
+    // {
+    //     echo "<div class='containe'>";
 
-            echo "<div class='mycard'>
-                    <div class='imag'>
-                        <img src='$impath'> 
-                    </div>
-                    <div class='pname'>$name</div>
-                    <div class='price'>₹$price</div>
-                    <div class='details'>$details</div>
-                    <div class = 'cent'>
-                        <a class = 'btn btn-warning bagc' href='editprod.php?pid=$pid'>
-                        Edit Product Info
-                        </a>
-                    </div>
-                    <div class = 'cent'>
-                        <a class = 'btn btn-danger bagc' href='deleteprod.php?pid=$pid'>
-                        Delete
-                        </a>
-                    </div>
-                </div>";
+    //     while ($row = mysqli_fetch_assoc($result))
+    //     {
+    //         $pid = $row['product_id'];
+    //         $name = $row['product_name'];
+    //         $impath = $row['img'];
+    //         $details = $row['details'];
+    //         $price = $row['price'];
+
+    //         echo "<div class='mycard'>
+    //                 <div class='imag'>
+    //                     <img src='$impath'> 
+    //                 </div>
+    //                 <div class='pname'>$name</div>
+    //                 <div class='price'>₹$price</div>
+    //                 <div class='details'>$details</div>
+    //                 <div class = 'cent'>
+    //                     <a class = 'btn btn-warning bagc' href='editprod.php?pid=$pid'>
+    //                     Edit Product Info
+    //                     </a>
+    //                 </div>
+    //                 <div class = 'cent'>
+    //                     <a class = 'btn btn-danger bagc' href='deleteprod.php?pid=$pid'>
+    //                     Delete
+    //                     </a>
+    //                 </div>
+    //             </div>";
             
-        }
-    }
+    //     }
+    // }
 
-    echo "</div>";
+    // echo "</div>";
 
 ?>

@@ -1,12 +1,12 @@
 <?php
 
     include_once "config.php";
-    function connect_db($user = "user") {
-        global $database, $database_user, $database_admin;
+    function connect_db() {
+        global $database, $database_user, $database_admin, $utype;
         $db_connection = new mysqli(
             $database["host"],
-            $user === "admin" ? $database_admin["username"] : $database_user["username"],
-            $user === "admin" ? $database_admin["password"] : $database_user["password"],
+            $utype === "admin" ? $database_admin["username"] : $database_user["username"],
+            $utype === "admin" ? $database_admin["password"] : $database_user["password"],
             $database["database_name"],
             $database["port"]
         );
@@ -140,14 +140,33 @@
         ]), true, 200);
     }
 
-    function getProducts() {
+    function getProducts($userID = null) {
         $db_connection = connect_db();
         if (!$db_connection) {
             return replyMsg("Database connection failed.", false, 500);
         }
 
         $query = "SELECT * FROM products";
-        $result = $db_connection->query($query);
+
+        if ($userID !== null) {
+            $query .= " WHERE user_id = ?";
+            $stmt = $db_connection->prepare($query);
+            if (!$stmt) {
+                $db_connection->close();
+                return replyMsg("Failed to prepare product query.", false, 500);
+            }
+            $stmt->bind_param("i", $userID);
+            if (!$stmt->execute()) {
+                $stmt->close();
+                $db_connection->close();
+                return replyMsg("Failed to execute product query.", false, 500);
+            }
+            $result = $stmt->get_result();
+            $stmt->close();
+        }
+        else {
+            $result = $db_connection->query($query);
+        }
 
         if (!$result) {
             $db_connection->close();
@@ -213,12 +232,14 @@
     }
 
     function getOrders($userId) {
+        global $utype;
         $db_connection = connect_db();
         if (!$db_connection) {
             return replyMsg("Database connection failed.", false, 500);
         }
 
-        $query = "SELECT * FROM orders JOIN products ON orders.product_id = products.product_id WHERE orders.user_id = ?";
+        $query = "SELECT * FROM orders JOIN products ON orders.product_id = products.product_id WHERE";
+        $query .= $utype === "Vendor" ? " products.user_id = ?" : " orders.user_id = ?";
         $stmt = $db_connection->prepare($query);
         if (!$stmt) {
             $db_connection->close();
