@@ -28,7 +28,7 @@
     $_SESSION['uid'] = $result["user_id"];
     $_SESSION['utype'] = $result["user_type"];
 
-    $redirect = ($result["user_type"] === 'Vendor') ? '../Vendor/home.php' : '../Customer/home.php';
+    $redirect = ($result["user_type"] === 'Vendor') ? '../home.html' : '../home.html';
 
     echo replyMsg($redirect, true, 200);
 

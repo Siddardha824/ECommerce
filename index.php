@@ -1,5 +1,2 @@
 <?php
-
-header("location:shared/login.html");
-
-?>
+header("location:home.html");

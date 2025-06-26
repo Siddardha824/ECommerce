@@ -1,25 +1,26 @@
-.menu
-{
+html, body {
+    height: 100%;
+    
+}
+
+.menu {
     background-color: rgb(19, 25, 33);
     justify-content: space-between;
     height: 60px;
     border-bottom: 2px solid #198754;
 }
 
-.bgcol
-{
+.bgcol {
     background-color: rgb(227, 230, 230);
 }
 
-.bagc
-{
+.bagc {
     background-color: rgb(19, 25, 33);
     color: #ffffff;
     font-weight: 500;
 }
 
-.navg
-{
+.navg {
     width: 40%;
     height: 100%;
     padding-left: 10px;
@@ -27,10 +28,9 @@
     align-items: center;
 }
 
-.mycard
-{
-    width:200px;
-    display:inline-block;
+.mycard {
+    width: 200px;
+    display: inline-block;
     position: relative;
     height: fit-content;
     padding: 15px;
@@ -41,24 +41,21 @@
     background-color: #ffffff;
 }
 
-.pname
-{
+.pname {
     font-size: larger;
     text-align: center;
     font-weight: bolder;
     font-family: 'Times New Roman', Times, serif;
 }
 
-.price
-{
+.price {
     color: #198754;
     text-align: center;
     font-weight: 500;
-    font-family:cursive;
+    font-family: cursive;
 }
 
-.details
-{
+.details {
     position: absolute;
     padding: 10px;
     visibility: hidden;
@@ -72,8 +69,7 @@
     transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
 }
 
-.mycard:hover .details
-{
+.mycard:hover .details {
     font-weight: 600;
     font-family: 'Times New Roman', Times, serif;
     left: 0;
@@ -86,14 +82,12 @@
     transition-delay: 0s, 0s, 0.3s;
 }
 
-img
-{
-    width:100%;
-    height:100%;
+img {
+    width: 100%;
+    height: 100%;
 }
 
-.containe
-{
+.containe {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -103,21 +97,18 @@ img
     margin: 0px;
 }
 
-.cent
-{
+.cent {
     margin: 5px;
     text-align: center;
 }
 
-.cen
-{
+.cen {
     display: flex;
     justify-content: center;
     padding-top: 20%;
 }
 
-.user-info
-{
+.user-info {
     width: 12%;
     padding-right: 10px;
     justify-content: space-between;
@@ -125,21 +116,18 @@ img
     text-align: right;
 }
 
-.uinfo
-{
+.uinfo {
     color: #ffffff;
     font-weight: 500;
     position: relative;
     padding: 5px;
 }
 
-.drop-down
-{
+.drop-down {
     display: none;
 }
 
-.uinfo:hover .drop-down
-{
+.uinfo:hover .drop-down {
     display: block;
     position: absolute;
     background-color: rgb(19, 25, 33);
@@ -154,8 +142,7 @@ img
     z-index: 2;
 }
 
-.upload
-{
+.upload {
     display: flex;
     flex-direction: column;
     width: 575px;
@@ -167,8 +154,7 @@ img
     border: 2px solid #198754;
 }
 
-.login
-{
+.login {
     display: flex;
     flex-direction: column;
     width: 300px;
@@ -180,28 +166,24 @@ img
     border: 2px solid #198754;
 }
 
-.uploadcont
-{
+.uploadcont {
     display: flex;
     justify-content: center;
 }
 
-.ordedby
-{
+.ordedby {
     text-align: center;
     font-weight: 600;
 
 }
 
-.placeorder
-{
+.placeorder {
     font-size: x-large;
     margin-right: 20px;
     color: #ffffff;
 }
 
-.porder
-{
+.porder {
     justify-content: end;
     background-color: rgb(35, 47, 62);
     padding: 10px;
@@ -210,8 +192,7 @@ img
     position: fixed;
 }
 
-.succe
-{
+.succe {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -222,8 +203,7 @@ img
     color: #198754;
 }
 
-.faile
-{
+.faile {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -234,15 +214,14 @@ img
     color: red;
 }
 
-.reslink
-{
+.reslink {
     margin-top: 30px;
     display: flex;
     flex-direction: row;
 }
 
-.regfail,.regsucc
-{
+.regfail,
+.regsucc {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -250,15 +229,13 @@ img
     padding: 100px;
 }
 
-.regfailtex
-{
+.regfailtex {
     font-size: x-large;
     font-weight: 700;
     color: red;
 }
 
-.regsucctex
-{
+.regsucctex {
     font-size: x-large;
     font-weight: 700;
     color: #198754;

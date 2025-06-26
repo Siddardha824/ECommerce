@@ -1,16 +1,15 @@
 <?php
 
-    include_once "../shared/authguard.php";
+include_once "../shared/authguard.php";
 
-    if($utype != 'Vendor')
-    {
-        echo "Login Error. Please Re-login";
-        die;
-    }
+if ($utype != 'Vendor') {
+    echo "Login Error. Please Re-login";
+    die;
+}
 
-    include_once "menu.html";
+include_once "menu.html";
 
-    echo '<div class="uploadcont">
+echo '<div class="uploadcont">
             <form action="uploadproduct.php" class="upload" method="post" enctype="multipart/form-data">
                 <div class="text-center text-light">
                     <h4>Upload Products</h4>
@@ -22,5 +21,3 @@
                 <button class="form-control mt-3 btn btn-success bagc">Upload</button>
             </form>
         </div>';
-
-?>
