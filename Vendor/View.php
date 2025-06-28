@@ -8,7 +8,7 @@ if ($utype != 'Vendor') {
 }
 
 // include_once "menu.html";
-include_once "../DatabaseScripts/accessDatabase.php";
+include_once "../db/accessDatabase.php";
 
 echo getOrders($uid);
 

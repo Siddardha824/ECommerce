@@ -1,7 +1,7 @@
 <?php
 
     header('Content-Type: application/json');
-    require_once "../DatabaseScripts/accessDatabase.php";
+    require_once "../db/accessDatabase.php";
 
     // 1. Get POST data
     $username = $_POST['uname'] ?? '';

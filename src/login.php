@@ -1,6 +1,6 @@
 <?php
 
-    include_once "../DatabaseScripts/accessDatabase.php";
+    include_once "../db/accessDatabase.php";
 
     session_start();
     header('Content-Type: application/json');
@@ -28,7 +28,7 @@
     $_SESSION['uid'] = $result["user_id"];
     $_SESSION['utype'] = $result["user_type"];
 
-    $redirect = ($result["user_type"] === 'Vendor') ? '../home.html' : '../home.html';
+    $redirect = 'home.html';
 
     echo replyMsg($redirect, true, 200);
 
