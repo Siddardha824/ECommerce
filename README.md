@@ -5,6 +5,7 @@
 This is a full-stack **E-Commerce web application** developed as part of the **Acmegrade Mar'23 Batch** project submission.  
 It enables two types of users — **Vendors** and **Customers** — to interact with the system for product management, shopping, and order processing.
 
+Currently refactoring to include REST API to update the technology of Frontend to React.js and Backend to Node.js in Develop branch
 ---
 
 ## ✨ Features
@@ -44,7 +45,7 @@ The project uses a relational database with the following key tables:
 
 ---
 
-## 📸 Screenshots (from submission)
+## 📸 Screenshots
 
 ### 🔑 Authentication
 - **Registration Page**  
