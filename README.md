@@ -46,22 +46,37 @@ The project uses a relational database with the following key tables:
 
 ## 📸 Screenshots (from submission)
 
-- Registration (success/failure)
-  ![Register Page](https://drive.google.com/uc?export=view&id=1-cdnkAvsbJNk9UbGQScOQ_t3_FY7CmI8
-  )
-- Login Page
-- Vendor Home, Upload Product, Edit Product
-- Customer Home, Cart, Order Placement
-- Vendor Orders (view, delivered, cancelled)
-- Database Tables (Users, Product, Cart)
+### 🔑 Authentication
+- **Registration Page**  
+  ![Registration Page](https://drive.google.com/uc?export=view&id=1-cdnkAvsbJNk9UbGQScOQ_t3_FY7CmI8)
+- **Login Page**  
+  ![Login Page](https://drive.google.com/uc?export=view&id=1ls2E93c3kWZnlWMtB8Pn2ioHYodgO-jA)
+
+### 🏬 Vendor Section
+- **Vendor Home**  
+  ![Vendor Home](https://drive.google.com/uc?export=view&id=18zXJzYRBtGBLxRq269cwPFwh7kLRPH3H)
+- **Upload Product**  
+  ![Upload Product](https://drive.google.com/uc?export=view&id=1P1B5GfXkeiExxalHpYfTBE_ENz2CKiCj)
+- **Edit Product**  
+  ![Edit Product](https://drive.google.com/uc?export=view&id=1DujV7W_LaNoYtjkojrS2jH62irY)
+- **Vendor Orders**  
+  ![Vendor Orders](https://drive.google.com/uc?export=view&id=19RHQC-RQdKooYrw0SbHgpUKTBGj6UtYa)
+
+### 🛒 Customer Section
+- **Customer Home**  
+  ![Customer Home](https://drive.google.com/uc?export=view&id=1PhjubaJGUVJD7_lynzKAGE6CgMAYM7w9)
+- **Cart Page**  
+  ![Cart Page](https://drive.google.com/uc?export=view&id=1wz_tA3foXaYnZ9iZXXwEbRSrBVsHixcG)
+- **Customer Orders**  
+  ![Customer Orders](https://drive.google.com/uc?export=view&id=16IsJteeNRoHDqGHPrWojPEK6JpvMaz8N)
 
 ---
 
-## 🛠 Tech Stack (inferred)
+## 🛠 Tech Stack
 
 - **Frontend:** HTML, CSS, JavaScript
-- **Backend:** PHP / Node.js (based on project setup)
-- **Database:** MySQL or similar RDBMS
+- **Backend:** PHP
+- **Database:** MySQL
 
 ---
 
