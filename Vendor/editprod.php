@@ -1,33 +1,31 @@
 <?php
 
-    include_once "../shared/authguard.php";
+include_once "../shared/authguard.php";
 
-    if($utype != 'Vendor')
-    {
-        echo "Login Error. Please Re-login";
-        die;
-    }
+if ($utype != 'Vendor') {
+    echo "Login Error. Please Re-login";
+    die;
+}
 
-    include_once "menu.html";
-    include_once "../shared/connection.php";
+include_once "menu.html";
+include_once "../shared/connection.php";
 
-    $pid = $_GET["pid"];
-    $query = "select * from products where product_id = $pid";
-    $result=mysqli_query($conn,$query);
-    if(! $result)
-    {
-        echo "Connection Error";
-        echo mysqli_error($conn);
-        die;
-    }
+$pid = $_GET["pid"];
+$query = "select * from products where product_id = $pid";
+$result = mysqli_query($conn, $query);
+if (! $result) {
+    echo "Connection Error";
+    echo mysqli_error($conn);
+    die;
+}
 
-    $row = mysqli_fetch_assoc($result);
-    $name = $row['product_name'];
-    $impath = $row['img'];
-    $details = $row['details'];
-    $price = $row['price'];
+$row = mysqli_fetch_assoc($result);
+$name = $row['product_name'];
+$impath = $row['img'];
+$details = $row['details'];
+$price = $row['price'];
 
-    echo '<div class="uploadcont">
+echo '<div class="uploadcont">
             <form action="editproduct.php" class="upload" method="post" enctype="multipart/form-data">
                 <div class="text-center text-light">
                     <h4>Edit Product</h4>
@@ -44,15 +42,13 @@
         
         <script>
             nameobj = document.getElementById("name");
-            nameobj.value = "'.$name.'";
+            nameobj.value = "' . $name . '";
             priceobj = document.getElementById("price");
-            priceobj.value = '.$price.';
+            priceobj.value = ' . $price . ';
             idobj = document.getElementById("pid");
-            idobj.value = '.$pid.';
+            idobj.value = ' . $pid . ';
             detailobj = document.getElementById("details");
-            detailobj.value = "'.$details.'";
+            detailobj.value = "' . $details . '";
         </script>
         
         ';
-
-?>

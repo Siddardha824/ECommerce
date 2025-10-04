@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link href="../Shared/styles.css" rel="stylesheet">
 
 </head>
+
 <body class="bgcol">
-    
+
     <div class="d-flex menu p-1">
         <div class="d-flex navg">
             <div>
@@ -21,19 +23,21 @@
             </div>
         </div>
         <?php
-        echo"<div class='user-info d-flex'>
-            <div class='uinfo'>
-                <div class='uname'>$uname</div>
-                <div class='drop-down'>
-                    <div class='uid'>User ID : $uid</div>
-                    <div class='utype'>User Type: $utype</div>
+
+        echo "<div class='user-info d-flex'>
+                <div class='uinfo'>
+                    <div class='uname'>$uname</div>
+                    <div class='drop-down'>
+                        <div class='uid'>User ID : $uid</div>
+                        <div class='utype'>User Type: $utype</div>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <a class='btn btn-danger bagc' href='../shared/logout.php'>Logout</a>
-            </div>
-        </div>";
+                <div>
+                    <a class='btn btn-danger bagc' href='../shared/logout.php'>Logout</a>
+                </div>
+            </div>";
         ?>
     </div>
 </body>
+
 </html>
